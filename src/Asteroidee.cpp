@@ -123,7 +123,7 @@ int main() {
 
     float backgroundSpeed = 400.0f;
     float naveSpeed = 300.0f;
-    float meteoroSpeed = 300.0f;
+    float meteoroSpeed = 1000.0f;
 
     sf::Text gameOverText("GAME OVER", font, 80);
     gameOverText.setFillColor(sf::Color::Red);
