@@ -1,4 +1,4 @@
-#include <SFML/Audio.hpp>
+#include <SFML/Audio.hpp> 
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib>
@@ -74,6 +74,12 @@ int main() {
     rectText.setOrigin(textBounds.left + textBounds.width / 2, textBounds.top + textBounds.height / 2);
     rectText.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
+    sf::Text meteorCounterText("", font, 30); // Texto inicial vacío
+    meteorCounterText.setFillColor(sf::Color::White);
+    meteorCounterText.setPosition(10, 10);
+
+    int meteorCount = 0; // Contador de meteoritos
+
     // Carga de música
     sf::Music Music;
     if (!Music.openFromFile("assets/music/intro.ogg")) {
@@ -123,7 +129,7 @@ int main() {
 
     float backgroundSpeed = 400.0f;
     float naveSpeed = 300.0f;
-    float meteoroSpeed = 1000.0f;
+    float meteoroSpeed = 1500.0f;
 
     sf::Text gameOverText("GAME OVER", font, 80);
     gameOverText.setFillColor(sf::Color::Red);
@@ -134,6 +140,9 @@ int main() {
     gameOverInstruction.setFillColor(sf::Color::White);
     gameOverInstruction.setOrigin(gameOverInstruction.getLocalBounds().width / 2, gameOverInstruction.getLocalBounds().height / 2);
     gameOverInstruction.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 100);
+
+    sf::Text gameOverCounterText("", font, 40);
+    gameOverCounterText.setFillColor(sf::Color::White);
 
     bool gameOver = false;
 
@@ -146,11 +155,13 @@ int main() {
 
             if (gameOver) {
                 if (event.type == sf::Event::MouseButtonPressed) {
-                    // Detener música de Game Over y regresar al menú principal
                     gameOverMusic.stop();
                     gameOver = false;
                     inMainMenu = true;
                     Music.play();
+
+                    meteorCount = 0; // Reiniciar contador
+                    meteorCounterText.setString(""); // Texto vacío hasta que caiga el primer meteoro
                 }
                 continue;
             }
@@ -184,14 +195,14 @@ int main() {
         }
 
         if (gameOver) {
-            // Reproducir música de Game Over si no está sonando
             if (gameOverMusic.getStatus() != sf::Music::Playing) {
                 gameOverMusic.play();
             }
 
             window.clear();
             window.draw(gameOverText);
-            window.draw(gameOverInstruction); // Dibuja el mensaje de instrucciones para regresar al inicio
+            window.draw(gameOverInstruction);
+            window.draw(gameOverCounterText); // Dibuja el contador
             window.display();
             continue;
         }
@@ -218,6 +229,11 @@ int main() {
                 nave.getPosition().y < 0 || nave.getPosition().y + nave.getBounds().height > WINDOW_HEIGHT) {
                 secondMenuMusic.stop();
                 gameOver = true;
+
+                // Actualiza el texto del contador para Game Over
+                gameOverCounterText.setString("Meteoritos contados: " + std::to_string(meteorCount));
+                gameOverCounterText.setOrigin(gameOverCounterText.getLocalBounds().width / 2, gameOverCounterText.getLocalBounds().height / 2);
+                gameOverCounterText.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 50);
             }
 
             meteoro.mover(0, meteoroSpeed * deltaTime);
@@ -225,9 +241,16 @@ int main() {
             if (nave.getBounds().intersects(meteoro.getBounds())) {
                 secondMenuMusic.stop();
                 gameOver = true;
+
+                // Actualiza el texto del contador para Game Over
+                gameOverCounterText.setString("Meteoritos esquivados: " + std::to_string(meteorCount));
+                gameOverCounterText.setOrigin(gameOverCounterText.getLocalBounds().width / 2, gameOverCounterText.getLocalBounds().height / 2);
+                gameOverCounterText.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 5 + 50);
             }
 
             if (meteoro.getPosition().y > WINDOW_HEIGHT || meteoro.getPosition().x < -50 || meteoro.getPosition().x > WINDOW_WIDTH + 50) {
+                meteorCount++; // Incrementar contador
+                meteorCounterText.setString("Meteoritos: " + std::to_string(meteorCount)); // Mostrar texto
                 meteoro.resetPosition(std::rand() % (WINDOW_WIDTH - 100) + 50, -100);
             }
         }
@@ -242,6 +265,7 @@ int main() {
             window.draw(background2);
             nave.dibujar(window);
             meteoro.dibujar(window);
+            window.draw(meteorCounterText);
         }
 
         window.display();
@@ -249,4 +273,3 @@ int main() {
 
     return 0;
 }
-
