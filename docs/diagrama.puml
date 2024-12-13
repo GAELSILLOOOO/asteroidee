@@ -1,0 +1,74 @@
+@startuml
+
+class Fondo {
+    - sf::Texture texture
+    - sf::Sprite sprite1
+    - sf::Sprite sprite2
+    --
+    + Fondo(string texturePath, float windowWidth, float windowHeight)
+    + void mover(float speed, float deltaTime)
+    + void dibujar(sf::RenderWindow& ventana)
+}
+
+class Meteoro {
+    - sf::Texture texture
+    - sf::Sprite sprite
+    --
+    + Meteoro(string texturePath, float startX, float startY, float scaleX, float scaleY)
+    + void mover(float offsetX, float offsetY)
+    + void resetPosition(float windowWidth, float startY)
+    + void dibujar(sf::RenderWindow& ventana)
+    + sf::FloatRect getBounds() const
+    + sf::Vector2f getPosition() const
+}
+
+class Musica {
+    - sf::Music introMusic
+    - sf::Music gameMusic
+    - sf::Music clickSound
+    - sf::Music gameOverMusic
+    --
+    + Musica()
+    + bool cargarMusica(string introPath, string gamePath, string clickPath, string gameOverPath)
+    + void reproducirIntro()
+    + void detenerIntro()
+    + void reproducirJuego()
+    + void detenerJuego()
+    + void reproducirClick()
+    + void reproducirGameOver()
+    + void detenerGameOver()
+}
+
+class Personaje {
+    - sf::Texture texture
+    - sf::Sprite sprite
+    --
+    + Personaje(string texturePath, float startX, float startY)
+    + void mover(float offsetX, float offsetY)
+    + void dibujar(sf::RenderWindow& ventana)
+    + sf::FloatRect getBounds() const
+    + void resetPosition(float startX, float startY)
+    + void setScale(float scaleX, float scaleY)
+    + sf::Vector2f getPosition() const
+}
+
+class Texto {
+    - sf::Text texto
+    --
+    + Texto(sf::Font& font, string contenido, unsigned int tamano, sf::Color color, float posX, float posY)
+    + void setContenido(string contenido)
+    + void dibujar(sf::RenderWindow& ventana)
+    + void setPosition(float x, float y)
+    + sf::FloatRect getBounds() const
+}
+
+class main {
+    + int main()
+}
+
+main ..> Fondo
+main ..> Meteoro
+main ..> Musica
+main ..> Personaje
+main ..> Texto
+@enduml
