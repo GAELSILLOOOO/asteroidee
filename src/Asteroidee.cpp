@@ -30,9 +30,9 @@ int main() {
     }
 
     // Textos
-    Texto rectText(font, "JUGAR", 60, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+    Texto rectText(font, "JUGAR", 55, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100);
     Texto meteorCounterText(font, "Meteoritos: 0", 30, sf::Color::White, 170, 30); // Posicionado en la esquina superior izquierda
-    Texto gameOverText(font, "GAME OVER", 80, sf::Color::Red, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+    Texto gameOverText(font, "GAME OVER", 80, sf::Color::Red, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100);
     Texto gameOverInstruction(font, "Click en cualquier lugar para regresar al inicio", 30, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 100);
     Texto gameOverCounterText(font, "", 40, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 50);
 

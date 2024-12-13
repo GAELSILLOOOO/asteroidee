@@ -1,4 +1,4 @@
-// Personaje.hpp
+// clase Personaje.hpp
 #pragma once
 
 #include <SFML/Graphics.hpp>

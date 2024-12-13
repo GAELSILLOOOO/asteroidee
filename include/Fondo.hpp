@@ -1,3 +1,4 @@
+//clase Fondo
 #pragma once
 
 #include <SFML/Graphics.hpp>

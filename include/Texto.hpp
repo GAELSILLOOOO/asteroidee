@@ -1,3 +1,4 @@
+//clase Texto 
 #pragma once
 
 #include <SFML/Graphics.hpp>
