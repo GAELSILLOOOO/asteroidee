@@ -25,6 +25,8 @@
 ### Descripción del Juego
 Asteroid Game es un juego donde el jugador debe esquivar meteoritos y lograr la mayor puntuación posible.
 
+---
+
 ### Objetivo del Juego
 - Controla a tu nave para evitar colisiones con meteoritos y evitar salirte de los limites o sera tu destruccion total.
 - Esquiva la mayor cantidad de meteoros que puedas
@@ -51,14 +53,13 @@ Una vez ejecutado el codigo, lo que se tiene que hacer es presionar el texto **J
 
 ---
 
-
 ### Elementos del Juego
 Meteoros: evita chocar con ellos o haran que tu nave sea destruida
 Limites: evita el tu nave toque algun limite o seras atrapdo por un aguero negro.
 
 
-
 ---
+
 ## Instalación y Ejecución
 
 ### Requisitos Previos
