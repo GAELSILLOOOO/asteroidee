@@ -71,7 +71,7 @@ Asteroid Game es un juego donde el jugador debe esquivar meteoritos y lograr la 
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tuusuario/asteroid-game.git
+    git clone https://github.com/GAELSILLOOOO/asteroidee.git
     cd asteroid-game
     ```
 
