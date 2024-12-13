@@ -1,81 +1,91 @@
 @startuml
-
-class Fondo {
-    - sf::Texture texture
-    - sf::Sprite sprite1
-    - sf::Sprite sprite2
-    --
-    + Fondo(string texturePath, float windowWidth, float windowHeight)
-    + void mover(float speed, float deltaTime)
-    + void dibujar(sf::RenderWindow& ventana)
+' Clase principal
+class Asteroid {
+    + main()
 }
 
-class Meteoro {
-    - sf::Texture texture
-    - sf::Sprite sprite
+' Clase Texto
+class Texto {
+    - sf::Text texto
+    - const sf::Font& fuente
     --
-    + Meteoro(string texturePath, float startX, float startY, float scaleX, float scaleY)
-    + void mover(float offsetX, float offsetY)
-    + void resetPosition(float windowWidth, float startY)
-    + void dibujar(sf::RenderWindow& ventana)
+    + Texto(const sf::Font&, const std::string&, unsigned int, sf::Color, float, float)
+    + void setContenido(const std::string&)
+    + void setColor(sf::Color)
+    + void setPosition(float, float)
+    + void dibujar(sf::RenderWindow&)
     + sf::FloatRect getBounds() const
-    + sf::Vector2f getPosition() const
+    + const sf::Font& getFont() const
 }
 
+' Clase Música
 class Musica {
-    - sf::Music introMusic
-    - sf::Music gameMusic
-    - sf::Music clickSound
-    - sf::Music gameOverMusic
+    - sf::Music intro
+    - sf::Music juego
+    - sf::Music click
+    - sf::Music gameOver
     --
-    + Musica()
-    + bool cargarMusica(string introPath, string gamePath, string clickPath, string gameOverPath)
+    + bool cargarMusica(const std::string&, const std::string&, const std::string&, const std::string&)
     + void reproducirIntro()
-    + void detenerIntro()
     + void reproducirJuego()
-    + void detenerJuego()
     + void reproducirClick()
     + void reproducirGameOver()
+    + void detenerIntro()
+    + void detenerJuego()
     + void detenerGameOver()
 }
 
+' Clase Personaje
 class Personaje {
-    - sf::Texture texture
     - sf::Sprite sprite
+    - sf::Texture texture
     --
-    + Personaje(string texturePath, float startX, float startY)
-    + void mover(float offsetX, float offsetY)
-    + void dibujar(sf::RenderWindow& ventana)
+    + Personaje(const std::string&, float, float)
+    + void mover(float, float)
+    + void dibujar(sf::RenderWindow&)
+    + void resetPosition(float, float)
+    + void setScale(float, float)
     + sf::FloatRect getBounds() const
-    + void resetPosition(float startX, float startY)
-    + void setScale(float scaleX, float scaleY)
     + sf::Vector2f getPosition() const
 }
 
-class Texto {
-    - sf::Text texto
+' Clase Meteoro
+class Meteoro {
+    - sf::Sprite sprite
+    - sf::Texture texture
+    - float scaleX
+    - float scaleY
     --
-    + Texto(sf::Font& font, string contenido, unsigned int tamano, sf::Color color, float posX, float posY)
-    + void setContenido(string contenido)
-    + void dibujar(sf::RenderWindow& ventana)
-    + void setPosition(float x, float y)
+    + Meteoro(const std::string&, float, float, float, float)
+    + void mover(float, float)
+    + void resetPosition(float, float)
+    + void dibujar(sf::RenderWindow&)
     + sf::FloatRect getBounds() const
+    + sf::Vector2f getPosition() const
 }
 
-class main {
-    + int main()
+' Clase Fondo
+class Fondo {
+    - sf::Sprite sprite
+    - sf::Texture texture
+    --
+    + Fondo(const std::string&, float, float)
+    + void mover(float, float)
+    + void dibujar(sf::RenderWindow&)
 }
 
 ' Relaciones
-main ..> Fondo : usa
-main ..> Meteoro : usa
-main ..> Musica : usa
-main ..> Personaje : usa
-main ..> Texto : usa
+Asteroid --> "1" Texto : usa
+Asteroid --> "1" Musica : usa
+Asteroid --> "1" Personaje : usa
+Asteroid o-- "1..*" Meteoro : "agregación (varios meteoros)"
+Asteroid *-- "1" Fondo : "composición (1 fondo principal)"
 
-Fondo "1" -- "0..*" Meteoro : tiene
-Fondo "1" -- "0..*" Texto : tiene
-Personaje "1" -- "0..*" Meteoro : es
-Personaje "1" -- "0..1" Musica : usa
+' Relaciones internas
+Texto *-- "1" sf::Font : composición
+Musica *-- "4" sf::Music : composición
+Personaje *-- "1" sf::Sprite : composición
+Meteoro *-- "1" sf::Texture : composición
+Fondo *-- "1" sf::Texture : composición
 
-@enduml
+@endum
