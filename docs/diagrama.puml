@@ -66,9 +66,16 @@ class main {
     + int main()
 }
 
-main ..> Fondo
-main ..> Meteoro
-main ..> Musica
-main ..> Personaje
-main ..> Texto
+' Relaciones
+main ..> Fondo : usa
+main ..> Meteoro : usa
+main ..> Musica : usa
+main ..> Personaje : usa
+main ..> Texto : usa
+
+Fondo "1" -- "0..*" Meteoro : tiene
+Fondo "1" -- "0..*" Texto : tiene
+Personaje "1" -- "0..*" Meteoro : es
+Personaje "1" -- "0..1" Musica : usa
+
 @enduml
