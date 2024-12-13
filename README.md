@@ -1,6 +1,7 @@
 # Asteroid Game
 
-¡Bienvenido al proyecto **Asteroid Game**! Este archivo README sirve como un manual completo para jugar, entender el código fuente, y contribuir al desarrollo de este proyecto.
+¡Bienvenido al proyecto **Asteroid Game**! Este archivo README sirve como un manual completo
+ para jugar, entender el código fuente, y contribuir al desarrollo de este proyecto.
 
 ---
 
@@ -16,30 +17,48 @@
 
 ---
 
-## Descripción del Juego
+## Manual del Juego
+ Brinda una guía del juego y tiene como objetivo principal ayudar al jugador a comprender y disfrutar al máximo de la experiencia de juego.
+
+---
+
+### Descripción del Juego
 Asteroid Game es un juego donde el jugador debe esquivar meteoritos y lograr la mayor puntuación posible.
-El juego está desarrollado utilizando **SFML (Simple and Fast Multimedia Library)**, y se basa en la interacción gráfica, música y manejo de eventos en tiempo real.
 
 ### Objetivo del Juego
-- Controla a tu personaje para evitar colisiones con meteoritos.
-- Recoge bonificaciones para aumentar tu puntuación.
+- Controla a tu nave para evitar colisiones con meteoritos y evitar salirte de los limites o sera tu destruccion total.
+- Esquiva la mayor cantidad de meteoros que puedas
 - Sobrevive el mayor tiempo posible.
 
 ---
 
-## Controles del Juego
 
-| Tecla         | Acción                |
-|---------------|-----------------------|
-| `W / ↑`       | Mover hacia arriba    |
-| `S / ↓`       | Mover hacia abajo     |
-| `A / ←`       | Mover hacia la izquierda |
-| `D / →`       | Mover hacia la derecha |
-| `Espacio`     | Pausar/Reanudar el juego |
-| `Esc`         | Salir del juego       |
+## Controles del Juego
+________________________________________
+| Tecla      | Acción                   |
+|------------|--------------------------|
+|   ` ↑`     | Mover hacia arriba       |
+|   ` ↓`     | Mover hacia abajo        |
+|   ` ←`     | Mover hacia la izquierda |
+|   ` →`     | Mover hacia la derecha   |
+|____________|__________________________|
 
 ---
 
+### Guia Para el Juego
+Una vez ejecutado el codigo, lo que se tiene que hacer es presionar el texto **JUGAR** y automaticamente te enviara al espacio con tu nave listo para esquivar meteritos y evitar salirte del limite o el agujero negro te atrapara, al momento de jugar en la esquina superior izquierda se te mostrara la cantidad de meteoritos que has esquivado una vez tu nave colisione (limite o meteoro) habras perdido, si deseas volver a jugar da click donde dice **click aqui para regresar al inicio** en el inicio debes repetir los mismos pasos, si deseas salir cierra la ventana edl ejecutable
+
+
+---
+
+
+### Elementos del Juego
+Meteoros: evita chocar con ellos o haran que tu nave sea destruida
+Limites: evita el tu nave toque algun limite o seras atrapdo por un aguero negro.
+
+
+
+---
 ## Instalación y Ejecución
 
 ### Requisitos Previos
