@@ -33,7 +33,7 @@ int main() {
     Texto rectText(font, "JUGAR", 55, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100);
     Texto meteorCounterText(font, "Meteoritos: 0", 30, sf::Color::White, 170, 30); // Posicionado en la esquina superior izquierda
     Texto gameOverText(font, "GAME OVER", 80, sf::Color::Red, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100);
-    Texto gameOverInstruction(font, "Click en cualquier lugar para regresar al inicio", 30, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 100);
+    Texto gameOverInstruction(font, "Click aqui para regresar al inicio", 30, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 100);
     Texto gameOverCounterText(font, "", 40, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 50);
 
     // Música
@@ -81,9 +81,9 @@ int main() {
                     sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
                     if (rectText.getBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
                         rectText.setContenido("JUGAR");
-                        rectText = Texto(font, "JUGAR", 60, sf::Color::Red, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+                        rectText = Texto(font, "JUGAR", 40, sf::Color::Red, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
                     } else {
-                        rectText = Texto(font, "JUGAR", 60, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+                        rectText = Texto(font, "JUGAR", 40, sf::Color::White, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
                     }
                 }
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
