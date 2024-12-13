@@ -17,8 +17,8 @@
 ---
 
 ## Descripción del Juego
-
-Asteroid Game es un juego donde el jugador debe esquivar meteoritos y lograr la mayor puntuación posible. El juego está desarrollado utilizando **SFML (Simple and Fast Multimedia Library)**, y se basa en la interacción gráfica, música y manejo de eventos en tiempo real.
+Asteroid Game es un juego donde el jugador debe esquivar meteoritos y lograr la mayor puntuación posible.
+El juego está desarrollado utilizando **SFML (Simple and Fast Multimedia Library)**, y se basa en la interacción gráfica, música y manejo de eventos en tiempo real.
 
 ### Objetivo del Juego
 - Controla a tu personaje para evitar colisiones con meteoritos.
@@ -93,58 +93,6 @@ El proyecto está organizado en las siguientes clases:
 │   ├── Meteoro.h
 │   └── Fondo.h
 └── README.md
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
